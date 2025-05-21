@@ -4,6 +4,10 @@ import { ChevronDown } from "lucide-react";
 
 const Wrapper = styled.div`
   width: 100%;
+`;
+
+const MainWrapper = styled.div`
+  width: 100%;
   background: #fff;
   border-radius: 25px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -18,6 +22,7 @@ const Section = styled.div`
   &:first-child {
     border-top: none;
   }
+  background-color: ${(props) => props.color };
 `;
 
 const SectionHeader = styled.div`
@@ -94,14 +99,14 @@ const Dot = styled.div`
   height: 29px;
   display: grid;
   margin-right: 15px;
-`
+`;
 
 const SmallDot = styled.div`
   width: 7px;
   height: 7px;
   background-color: #d9d9d9;
   border-radius: 50%;
-`
+`;
 
 const meetingData = [
   {
@@ -147,52 +152,50 @@ const MeetingSidebar = () => {
   };
   return (
     <Wrapper>
-      {meetingData.map((meet, index) => (
-        <React.Fragment key={index}>
-          <Section>
-            <SectionHeader>
-              <P>
-                <Indicator color={meet.color} />
-                {meet.name}
-              </P>
-              <Div>
-                <P>{meet.num}</P>
-              </Div>
-              <Button onClick={() => toggleSection(index)}>
-                <ChevronDown size={meet.size} />
-              </Button>
-            </SectionHeader>
+      <MainWrapper>
+        {meetingData.map((meet, index) => (
+          <React.Fragment key={index}>
+            <Section>
+              <SectionHeader>
+                <P>
+                  <Indicator color={meet.color} />
+                  {meet.name}
+                </P>
+                <Div>
+                  <P>{meet.num}</P>
+                </Div>
+                <Button onClick={() => toggleSection(index)}>
+                  <ChevronDown size={meet.size} />
+                </Button>
+              </SectionHeader>
 
-            {expandedSections[index] &&
-              meet.content.map((item, i) => (
-                <MeetingItem key={i}>
-                  <Space></Space>
-                  <MeetingText>{item.title}</MeetingText>
-                  <Dot>
-                    <SmallDot></SmallDot>
-                    <SmallDot></SmallDot>
-                    <SmallDot></SmallDot>
-                  </Dot>
-                  <MeetingDate>{item.date}</MeetingDate>
-                </MeetingItem>
-              ))}
-          </Section>
-        </React.Fragment>
-      ))}
+              {expandedSections[index] &&
+                meet.content.map((item, i) => (
+                  <MeetingItem key={i}>
+                    <Space></Space>
+                    <MeetingText>{item.title}</MeetingText>
+                    <Dot>
+                      <SmallDot></SmallDot>
+                      <SmallDot></SmallDot>
+                      <SmallDot></SmallDot>
+                    </Dot>
+                    <MeetingDate>{item.date}</MeetingDate>
+                  </MeetingItem>
+                ))}
+            </Section>
+          </React.Fragment>
+        ))}
+      </MainWrapper>
+      
+      <MainWrapper>
+        <Section>
+          <SectionHeader>
+
+          </SectionHeader>
+        </Section>
+      </MainWrapper>
     </Wrapper>
   );
 };
 
 export default MeetingSidebar;
-
-{
-  /* {meetingData.map((meeting, index) => (
-    <MeetingItem key={index}>
-      <MeetingInfo>
-        <MeetingImage />
-        <MeetingText>{meeting.title}</MeetingText>
-      </MeetingInfo>
-      <MeetingDate>{meeting.date}</MeetingDate>
-    </MeetingItem>
-  ))} */
-}
