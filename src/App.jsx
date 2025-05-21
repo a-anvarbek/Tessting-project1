@@ -1,7 +1,9 @@
-import Header from './components/Header'
+import styled from 'styled-components'
 
 import './App.css'
-import styled from 'styled-components'
+
+import Header from './components/Header'
+import MeetingSidebar from './components/MeetingSidebar'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -16,6 +18,7 @@ function App() {
   return (
     <Wrapper>
       <Header />
+      <MeetingSidebar />
     </Wrapper>
   )
 }
