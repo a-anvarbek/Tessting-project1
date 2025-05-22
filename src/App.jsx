@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './components/Header'
 import MeetingSidebar from './components/MeetingSidebar'
+import Menu from './components/Menu'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,6 +20,7 @@ function App() {
     <Wrapper>
       <Header />
       <MeetingSidebar />
+      <Menu />
     </Wrapper>
   )
 }
